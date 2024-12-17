@@ -1,0 +1,25 @@
+package com.game2025backendMK5.game2025backendMK5.services;
+
+import com.game2025backendMK5.game2025backendMK5.model.User;
+import com.game2025backendMK5.game2025backendMK5.repo.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepo userRepository;
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    public User createUser(User user) {
+        return userRepository.save(user);
+    }
+
+
+}

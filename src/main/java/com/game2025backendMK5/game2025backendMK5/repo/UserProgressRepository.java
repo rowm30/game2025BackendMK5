@@ -11,4 +11,6 @@ public interface UserProgressRepository extends JpaRepository<UserProgress, Long
     List<UserProgress> findByUserIdAndTopic_QuestSubtype(Long userId, String questSubtype);
 
     Optional<UserProgress> findByUserIdAndTopic_Id(Long userId, Long topicId);
+
+    List<UserProgress> findByUserIdAndTopic_IdIn(Long userId, List<Long> topicIds);
 }

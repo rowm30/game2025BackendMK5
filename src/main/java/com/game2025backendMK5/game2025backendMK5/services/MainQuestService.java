@@ -39,14 +39,14 @@ public class MainQuestService {
 
         for (String subtype : MAIN_QUEST_SUBTYPES) {
             List<Topic> topics = topicRepository.findByQuestTypeAndQuestSubtype("Main", subtype);
-            double progress = calculateUserProgress(userId, topics);
+            int progress = calculateUserProgress(userId, topics);
             results.add(new QuestProgressDTO(subtype, progress, QUEST_ROUTES.get(subtype)));
         }
 
         return results;
     }
 
-    private double calculateUserProgress(Long userId, List<Topic> topics) {
+    private int calculateUserProgress(Long userId, List<Topic> topics) {
         if (topics.isEmpty()) {
             return 0;
         }
@@ -60,6 +60,6 @@ public class MainQuestService {
                 .toList();
 
         long completedCount = userProgressList.stream().filter(UserProgress::isCompleted).count();
-        return (completedCount * 100.0) / topics.size();
+        return (int) ((completedCount * 100.0) / topics.size());
     }
 }

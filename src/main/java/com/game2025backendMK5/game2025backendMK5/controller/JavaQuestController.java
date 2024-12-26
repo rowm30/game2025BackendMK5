@@ -33,6 +33,12 @@ public class JavaQuestController {
      * If you don't want to pass questType/subtype from frontend,
      * you can hard-code 'Main' and 'Java'.
      */
+
+    @GetMapping("/test")
+    public String test() {
+        return "Backend is working";
+    }
+
     @GetMapping("/java-quest")
     public List<UserTopicDTO> getJavaQuestTopics(
             @RequestParam Long userId,

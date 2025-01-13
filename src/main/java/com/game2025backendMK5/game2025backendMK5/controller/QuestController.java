@@ -46,6 +46,11 @@ public class QuestController {
         return new QuestDataResponse(userTopics, completionPercentage, mainCompletion, sideCompletion, overallCompletion);
     }
 
+    @GetMapping("/user/{userId}/overall-completion")
+    public int getOverallCompletion(@PathVariable Long userId) {
+        return (int)completionService.computeOverallCompletion(userId);
+    }
+
     static class QuestDataResponse {
         private List<UserTopicDTO> topics;
         private double subQuestCompletion;
